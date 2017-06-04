@@ -96,44 +96,33 @@
                         Summary
                     </h1>
                     <p>
-                        In this project, we wanted to determine what factors played a role in determining what makes a great reddit post. 
+                        In this project, we wanted to determine what factors played a role in determining what makes a great Reddit post. 
                     </p>
                     <h3 class="text-center">Motivation</h3>
                     <p>
-                        Everyday support desks all over the world support millions of users. Each of these users presents 
-                        their own unique problem and wants to know how long it will take for this problem to be solved. 
-                        This presents a challenge to the help desk staff who cannot provide accurate estimates for every issue. 
-                        We propose the use of machine learning techniques in order to provide a prediction for how long  
-                        an issue will take to complete at the time of creation.
-                        Implementing these predictions will allow for helpdesk staff to not only provide users with a 
-                        more accurate estimate of when their issue will be resolved but could also help identify any possible 
-                        bottlenecks that could be avoided or made more efficient to provide better service. For example maybe 
-                        we might notice a support group which takes a long time to process tickets because they are receiving 
-                        too many issues which might suggest they are short staffed.
+                        With around 234 million unique users, Reddit is one of the biggest and most used websites in the world. It beats eBay, Pinterest, and Netflix in usage with 8 billion page views a month. In the Reddit community, particular posts gather enough traction to make it to the front page to garner the attention of millions. 
+
+                        We wished to create a model that consumes a Reddit post and predicts whether it will be successful. This inquiry is valuable in that optimizing the engagement levels of content posted on Reddit or other popular social media platforms is highly beneficial to content creators. Stakeholders range from the advertising industry and corporate commercial interests to individuals interacting with communities defined by subreddits.
+
                     </p>
                     <h3 class="text-center">Methodology</h3>
                     <p>
-                        Our features are attributes of the ticket, such as date and time submitted, its categorization, etc.
-                        We trained our data using a variety of different machine learning algorithms, focusing on algorithms which provided rules.
-                        We then compared the accuracy of these algorithms using 10-fold cross validation on each.
-                        We found the algorithms that yielded the highest accuracy to be the J48 decision tree and IBk Nearest Neighbors Algorithms and fine tuned their parameters to get the highest accuracy. Figure 1 shows the learning curve for the J48 algorithm on our training instances.
-                        We then used these tuned algorithms and ran them against a held out test set to provide the results below
+                      Our features included the title, if the article has a flair, the date and time, how many comments it has, and the number of gold it has. We went to five different subreddits (funny, worldnews, gaming, movies, sports) and used 1000 top posts for each due to reddit's 1000 limit in each function call. Then we take the json file of the first 1000 posts and categorize each featre. Then we would classify the posts based off this good / bad score categorization. The csv output would say the time of day, weekday, number of comments, how much gold the post has, and whether the post is considered good or bad depending on the score.
+
+                      There were four different approaches we took to give classification to our data. For our first set of data, we trained on the top 1000 posts from the gaming subreddit using the classification threshold as one standard deviation of the mean score. The second set of data we used 5000 posts from 5 subreddits using the same classification threshold.The third set of data we used the same 5000 posts but using mean as the classification threshold. The fourth set of data we used was just 1000 posts from gaming subreddit but just using mean as the classification threshold. We held out the top 1000 posts from the relationships subreddit to test on. We used Weka to train and test our data using the algorithms shown in the figure. 
                     </p>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <img class= "center-block"class="img-responsive"src="http://onlinestatbook.com/2/graphing_distributions/graphics/yahoo_games.jpg" width="304" height="236" alt="Learning Curve">
+                            <img class= "center-block"class="img-responsive" src="img/stats.png" width="304" height="236" alt="Learning Curve">
                         </div>
                     </div>
                     <div class="text-center">
-                        <p>Figure 1:The learning curve produced by the J48 Decision Tree Algoritmh on our data</p>
+                        <p>Figure 1:Accuracy Results from WEKA</p>
                     </div>
                     <h3 class="text-center">Results</h3>
                     <p class="container col-lg-8 col-lg-offset-2">
-                        Using the J48 learning algorithm the best accuracy we achieved was 66.5%. This accuracy is not as high as we hoped to achieved
-                        and we believe there are several reasons for that. First of ou 8690 instances about 63% were in the category of "12 hours or Less"
-                        While the rest of the instances were split among 10 categories, along with this we were missing key attributes including who worked on the issue and what support tools were used. Despite this we were still able to garner some useful information from our decision tree.
-                        Looking at the top decision attributes within the tree we found the most important attributes are whether the ticket was assigned to the main support center or elsewhere, and if the ticket was submitted during a weekday or the weekend. We also found that issues regarding "Our Northwestern" tend to take longer to resolve which is something worth investigating to see if the efficiency of such issues can be improved.
+                        Our models produced used different algorithms through Weka to classify our test data, and did not have much improvement over ZeroR. The most consistent improvement in accuracy over ZeroR was through the use of BayeNet algorithm. Through the slight improvement in accuracy using the BayesNet model, we found that the features most important were time of day posted and number of comments the article received.
                     </p>
                 </div>
           </body> 
@@ -147,7 +136,7 @@
         <div class="container">
             <h2 class="container col-lg-8 col-lg-offset-2 text-center">Conclusion and Report</h2>
                     <p class="container col-lg-8 col-lg-offset-2">
-                        Overall, there's still a lot more work to be done before this could be used by support staff to provide accurate estimates but we believe that using more data and a few additional attributes, particularly attributes such as who submitted and worked on the issue, and features gathered from the description and title of the issue would greatly improve accuracy.
+                        Overall, there's still a lot more work to be done to improve accuracy and find specific characteristics in what makes a good post. Through data retrieval, we could only use data collection through .json retrieval in our python script and were unable to retrieve more attributes that would have improved our accuracy due to lack of time. 
                     </p>
             <div class="row">
                 <div class="col-lg-12 text-center">
