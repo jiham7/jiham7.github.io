@@ -107,22 +107,23 @@
                     </p>
                     <h3 class="text-center">Methodology</h3>
                     <p>
-                      Our features included the title, if the article has a flair, the date and time, how many comments it has, and the number of gold it has. We went to five different subreddits (funny, worldnews, gaming, movies, sports) and used 1000 top posts for each due to reddit's 1000 limit in each function call. Then we take the json file of the first 1000 posts and categorize each featre. Then we would classify the posts based off this good / bad score categorization. The csv output would say the time of day, weekday, number of comments, how much gold the post has, and whether the post is considered good or bad depending on the score.
-
-                      There were four different approaches we took to give classification to our data. For our first set of data, we trained on the top 1000 posts from the gaming subreddit using the classification threshold as one standard deviation of the mean score. The second set of data we used 5000 posts from 5 subreddits using the same classification threshold.The third set of data we used the same 5000 posts but using mean as the classification threshold. The fourth set of data we used was just 1000 posts from gaming subreddit but just using mean as the classification threshold. We held out the top 1000 posts from the relationships subreddit to test on. We used Weka to train and test our data using the algorithms shown in the figure. 
+                      We gathered data from 6000 different posts from 6 different subreddits to for training and testing. Weka was used as our approach to model our data using the algorithms: ZeroR, J48, MLP, BayesNet, Nearest Neighbor, IBK, LMT, and RepTree. We held out 1000 posts to test on. The features we used are time of day posted, day of the week posted, number of comments, gilded or not, and post score. 
                     </p>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <img class= "center-block"class="img-responsive" src="img/stats.png" width="550" height="236" alt="Learning Curve">
+                            <figure>
+                                <img class= "center-block"class="img-responsive" src="img/stats.png" width="450" height="236" alt="Learning Curve">
+                                <figcaption class="text-center">Figure 1. Accuracy (in percentages) of machine learning techniques across datasets. (*) indicates technique’s accuracy is <br>greater than or equal to ZeroR. (**) indicates technique yields maximum accuracy for this range of approaches.</figcaption>
+                            </figure>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <p>Figure 1. Accuracy (in percentages) of machine learning techniques across datasets. (*) indicates technique’s accuracy is greater than or equal to ZeroR. (**) indicates technique yields maximum accuracy for this range of approaches.</p>
+                    <div class="text-center" id="caption">
+                        <p></p>
                     </div>
                     <h3 class="text-center">Results</h3>
                     <p class="container col-lg-8 col-lg-offset-2">
-                        Our models produced used different algorithms through Weka to classify our test data, and did not have much improvement over ZeroR. The most consistent improvement in accuracy over ZeroR was through the use of BayeNet algorithm. Through the slight improvement in accuracy using the BayesNet model, we found that the features most important were time of day posted and number of comments the article received.
+                        We found that our solutions did not perform as accurately as we would have hoped, as shown in the figure. Most models did not improve significantly over ZeroR, if at all. This is because no combination of features effectively differentiated between high-scoring posts and the rest of the sample. The best and most consistent algorithm that was used to train the data sets was BayesNet, Weka’s Bayesian networks algorithm.
                     </p>
                 </div>
           </body> 

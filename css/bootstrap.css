@@ -1069,6 +1069,9 @@ th {
 .glyphicon-menu-up:before {
   content: "\e260";
 }
+.caption {
+  font-size: 20px;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
