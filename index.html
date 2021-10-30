@@ -302,7 +302,7 @@
                             });
                             //Sending Ethereum to an address
                             sendEthButton.addEventListener('click', () => {
-                                let inputAmount = document.getElementById("ticketAmount").value ;
+                                let inputAmount = 1 ;
                                 const amount = web3.utils.toWei((Math.round(inputAmount * 100) / 100).toString(), 'ether');
                                 const value = web3.utils.toHex(amount);
                                 ethereum
