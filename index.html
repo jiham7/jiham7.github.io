@@ -937,7 +937,19 @@ JRNY NFT sets</h1> </div>
 </div>
 </footer>
 </div>
+<script type="module">
+  import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
+  // Your code here...
+  // A Web3Provider wraps a standard Web3 provider, which is
+// what MetaMask injects as window.ethereum into each page
+const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+// Prompt user for account connections
+await provider.send("eth_requestAccounts", []);
+const signer = provider.getSigner();
+console.log("Account:", await signer.getAddress());
+</script>
 <script>
+  
 function mint() {
   const mintNow = document.getElementById("mint-now");
   const connectWallet = document.getElementById("connect-wallet");
