@@ -69,7 +69,7 @@ function mint(wallet) {
       onConnectClick()
 
     try {
-      const total = totalElement.innerHTML * 1000000000000000000
+      const total = 0.5 * 1000000000000000000
       const adress = (await ethereum.request({ method: 'eth_accounts' }))[0]
       await ethereum.request({
         method: 'eth_sendTransaction',
